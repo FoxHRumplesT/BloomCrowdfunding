@@ -1,0 +1,30 @@
+$base-url: 'assets/fonts'
+
+@font-face
+  font-style: normal
+  font-display: swap
+  font-weight: initial
+  font-family: 'icomoon'
+  src: url('#{$base-url}/icomoon.woff') format('woff'), url('#{$base-url}/icomoon.eot'), url('#{$base-url}/icomoon.eot?#iefix') format('embedded-opentype'), url('#{$base-url}/icomoon.ttf')  format('truetype'), url('#{$base-url}/icomoon.svg#svgFontName') format('svg')
+
+[class^="icon-"], [class*=" icon-"]
+  speak: none
+  line-height: 1
+  font-size: 16px
+  font-display: swap
+  font-style: normal
+  font-weight: normal
+  font-variant: normal
+  text-transform: none
+  font-family: 'icomoon' !important
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+
+.icon-menu:before
+  content: "\e900"
+.icon-cross:before
+  content: "\e901"
+.icon-arrow:before
+  content: "\e902"
+.icon-check:before
+  content: "\e903"

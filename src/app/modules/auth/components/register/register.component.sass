@@ -1,0 +1,50 @@
+@import 'mixins'
+
+.wrapper-register
+  +flex(center, center, column)
+  .title
+    +bold()
+    margin: 40px 0
+    font-size: 22px
+    text-align: center
+    line-height: 29px
+  form
+    width: 100%
+    .first-step, .second-step
+      display: none
+      &.show
+        display: block
+    input
+      margin-bottom: 16px
+      &.address
+        margin-bottom: 0
+    .passwords
+      &.ng-invalid
+        &.ng-touched
+          input
+            box-shadow: 0 0 0 2px var(--red-1)
+    .next-step, .previous-step
+      +flex(center, center)
+      margin: 16px auto 32px auto
+      .button
+        margin: 0 16px
+        color: var(--white-1)
+        background-color: var(--blue-1)
+        &:disabled
+          background-color: var(--blue-2)
+      .next, .previous
+        +flex(center, center)
+        width: 40px
+        height: 40px
+        border-radius: 10px
+        color: var(--white-1)
+        background-color: var(--blue-3)
+      .previous
+        transform: rotate(180deg)
+    .go-to-login
+      display: block
+      font-size: 14px
+      text-align: center
+      a
+        font-size: 14px
+        color: var(--blue-1)

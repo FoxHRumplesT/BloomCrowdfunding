@@ -1,0 +1,12 @@
+<div class="wrapper-login">
+  <h3 class="title">¡Iniciar sesión!</h3>
+  <form [formGroup]="form" (submit)="submit()">
+    <input class="input-text username" type="text" placeholder="Nombre de usuario" formControlName="username">
+    <input class="input-text password" type="password" placeholder="Contraseña" formControlName="password">
+    <button type="submit" class="button" [disabled]="form.invalid">Iniciar sesión</button>
+    <span class="go-to-register">
+      ¿No tienes cuenta aún?
+      <a [routerLink]="['..', 'register']"> ¡Registrate!</a>
+    </span>
+  </form>
+</div>

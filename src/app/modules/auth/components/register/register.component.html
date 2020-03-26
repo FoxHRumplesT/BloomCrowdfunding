@@ -1,0 +1,38 @@
+<div class="wrapper-register">
+  <h3 class="title">¡Crea tu cuenta para empezar a invertir!</h3>
+  <form [formGroup]="form">
+    <div class="first-step" [class.show]="showFirstStep">
+      <input class="input-text name" type="text" placeholder="Nombres" formControlName="name">
+      <input class="input-text lastName" type="text" placeholder="Apellidos" formControlName="lastName">
+      <input class="input-text phone" type="text" placeholder="Teléfono" formControlName="phone">
+      <input class="input-text email" type="text" placeholder="Correo electrónico" formControlName="email">
+      <input class="input-text address" type="text" placeholder="Dirección" formControlName="address">
+      <div class="next-step" (click)="setSecondStep()">
+        <button class="button">Siguiente</button>
+      </div>
+    </div>
+    <div class="second-step" [class.show]="showSecondStep">
+      <input class="input-text document-type" type="text" placeholder="Tipo de documento" formControlName="documentType">
+      <input class="input-text document-number" type="text" placeholder="Número de documento" formControlName="documentNumber">
+      <input class="input-text username" type="text" placeholder="Nombre de usuario" formControlName="username">
+      <div class="passwords" formGroupName="passwords">
+        <input class="input-text password" type="text" placeholder="Contraseña" formControlName="password">
+        <input class="input-text confirm-password" type="text" placeholder="Confirmar contraseña" formControlName="confirmPassword">
+      </div>
+      <label class="checkbox terms-and-conditions">
+        <input type="checkbox" formControlName="acceptTerms" id="terms"> <span class="box icon-check"></span>
+        <label for="terms">Acepto los <a href="http://bloomcrowdfunding.co/" target="_blank">términos y condiciones y política de privacidad de datos</a></label>
+      </label>
+      <div class="previous-step">
+        <div class="previous" (click)="setFirstStep()">
+          <span class="icon-arrow"></span>
+        </div>
+        <button (click)="submit()" class="button" [disabled]="form.invalid">¡Registrarme!</button>
+      </div>
+    </div>
+    <span class="go-to-login">
+      ¿Ya tienes una cuenta?
+      <a [routerLink]="['..', 'login']"> Inicia sesión</a>
+    </span>
+  </form>
+</div>

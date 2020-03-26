@@ -1,0 +1,25 @@
+@import 'mixins'
+
+.wrapper-login
+  +flex(center, center, column)
+  .title
+    +bold()
+    margin: 50px 0
+    font-size: 42px
+  form
+    width: 100%
+    .username
+      margin-bottom: 16px
+    .button
+      margin: 32px auto
+      color: var(--white-1)
+      background-color: var(--blue-1)
+      &:disabled
+        background-color: var(--blue-2)
+    .go-to-register
+      display: block
+      font-size: 14px
+      text-align: center
+      a
+        font-size: 14px
+        color: var(--blue-1)
