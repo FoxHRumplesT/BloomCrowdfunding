@@ -6,6 +6,8 @@ import { Observable, of } from 'rxjs';
 
 import { loginAction, loginSuccessAction, createUserAction, createUserSuccessAction } from './actions';
 import { AuthServices } from '../auth.services';
+import { HttpResponse } from '@angular/common/http';
+import { User } from '../auth.entities';
 
 @Injectable()
 export class AuthEffects {
@@ -21,8 +23,9 @@ export class AuthEffects {
       map(response => ({ response, error: null })),
       catchError(error => of({ error, response: null }))
     )),
-    tap(({ response, error }) => {
-      if (!error && !!response) {}
+    tap(({ response, error }: {response: HttpResponse<User>, error: any }) => {
+      if (!error && !!response) {console.log(response.headers.keys());
+      }
     }),
     map(_ => loginSuccessAction(null))
   ));

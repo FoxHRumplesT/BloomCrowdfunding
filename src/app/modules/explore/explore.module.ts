@@ -10,13 +10,17 @@ import { ExploreRoutingModule } from './explore-routing.module';
 import { ExploreServices } from './explore.services';
 import { ExploreFacade } from './explore.facade';
 import { ExploreComponent } from './explore.component';
+import { SharedModule } from '../shared/shared.module';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
-    ExploreComponent
+    ExploreComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     StoreModule.forFeature(exploreFeatureName, exploreReducers),
     EffectsModule.forFeature([ ExploreEffects ]),
     ExploreRoutingModule

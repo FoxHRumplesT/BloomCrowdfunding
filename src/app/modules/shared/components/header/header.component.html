@@ -1,0 +1,44 @@
+<div class="wrapper-header">
+  <a class="login-mobile" [routerLink]="['/auth', 'login']">Iniciar sesión</a>
+  <figure class="header-logo">
+    <img src="assets/img/bloom-logo-1.png">
+  </figure>
+  <div class="actions-mobile">
+    <span class="icon-search" (click)="toggleSearchInput()"></span>
+    <span class="icon-menu" (click)="toggleShowMenu()"></span>
+  </div>
+  <div class="actions-desktop">
+    <span class="icon-search" (click)="toggleSearchInput()"></span>
+    <ul class="menu">
+      <li>
+        <a [routerLink]="['/explore']">Explora</a>
+      </li>
+      <li>
+        <a [routerLink]="['/about']">Quienes somos</a>
+      </li>
+      <li>
+        <a class="button" [routerLink]="['/auth', 'login']">Iniciar sesión</a>
+      </li>
+    </ul>
+  </div>
+  <div class="mobile-menu" [class.show]="showMenu">
+    <ul class="overlay" (click)="toggleShowMenu()">
+      <figure class="menu-logo">
+        <img src="assets/img/bloom-logo-1.png">
+        <span class="icon-arrow"></span>
+      </figure>
+      <li>
+        <a [routerLink]="['/explore']">Explora</a>
+      </li>
+      <li>
+        <a [routerLink]="['/about']">Quienes somos</a>
+      </li>
+      <li>
+        <a>Cerrar sesión</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="search" [formGroup]="form" *ngIf="showSearch">
+  <input type="text" formControlName="query" placeholder="EJ: Zapatos" autofocus>
+</div>

@@ -1,3 +1,32 @@
-<p>
-  explore works!
-</p>
+<div class="wrapper-explore">
+  <app-header (onQueryChange)="navigateToSearchProducts($event)"></app-header>
+  <h2 class="title">¡Proyectos para ti!</h2>
+  <hr />
+  <ng-container *ngIf="hasProducts$ | async; else noProducts">
+    <ng-container *ngIf="!(isLoadingProducts$ | async); else loader">
+      <ul class="products">
+        <li *ngFor="let product of products$ | async">
+          <app-product-card [product]="product"></app-product-card>
+        </li>
+      </ul>
+    </ng-container>
+      <ng-template #loader>
+        <div class="loader">
+          <div class="points">
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+          </div>
+          <p class="text">Estamos buscando resultados para ti.</p>
+        </div>
+      </ng-template>
+  </ng-container>
+  <ng-template #noProducts>
+    <div class="no-products">
+      <figure>
+        <img src="assets/img/sad.png">
+      </figure>
+      <p class="text">¡Lo sentimos, no hemos encontrado productos!</p>
+    </div>
+  </ng-template>
+</div>
