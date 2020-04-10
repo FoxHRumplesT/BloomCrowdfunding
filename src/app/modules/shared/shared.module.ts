@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './components/header/header.component';
+import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    CurrencyFormatPipe
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
     RouterModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    CurrencyFormatPipe
   ]
 })
 export class SharedModule { }

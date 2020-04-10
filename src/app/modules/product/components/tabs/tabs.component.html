@@ -1,0 +1,23 @@
+<div class="wrapper-tabs">
+  <ul class="tabs">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)"
+      [class.active]="isCurrentTab(tab)">{{ tab.label }}</li>
+  </ul>
+
+  <div class="content">
+    <ng-container [ngSwitch]="currentTab">
+      <div *ngSwitchCase="1">
+        <ng-content select="[tab1]"></ng-content>
+      </div>
+      <div *ngSwitchCase="2">
+        <ng-content select="[tab2]"></ng-content>
+      </div>
+      <div *ngSwitchCase="3">
+        <ng-content select="[tab3]"></ng-content>
+      </div>
+      <div *ngSwitchCase="4">
+        <ng-content select="[tab4]"></ng-content>
+      </div>
+    </ng-container>
+  </div>
+</div>

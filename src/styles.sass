@@ -2,6 +2,7 @@
 @import 'assets/css/mixins'
 @import 'assets/css/inputs'
 @import 'assets/css/icons'
+@import 'assets/css/breakpoints'
 
 *
   +regular()
@@ -15,3 +16,10 @@ body
   height: 100vh
   ul
     list-style: none
+
+.mobile
+  +for-desktop-up()
+    display: none !important
+.desktop
+  +for-phone-only()
+    display: none !important

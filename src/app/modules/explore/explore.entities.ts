@@ -9,6 +9,7 @@ export interface Product {
   name: string;
   buyDescription: string;
   investmentDescription: string;
+  loanDescription: string;
   amountRequeredMin: number;
   amountRequeredMax: number;
   amountReceived: number;

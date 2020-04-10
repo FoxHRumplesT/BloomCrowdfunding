@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="wrapper-product">
+  <ng-container *ngIf="!(isLoadingProduct$ | async); else loader">
+    <ng-container *ngIf="product$ | async as product; else noMatch">
+      <figure>
+        <img [src]="image$ | async">
+      </figure>
+      <div class="info mobile">
+        <div class="by-end">
+          <span class="by">Por: Kurotsushi Mayuri</span>
+          <span class="end">Termina  en 1 mes y 15 días</span>
+        </div>
+        <h2 class="title">{{ product.name }}</h2>
+        <p class="buy-description">{{ product.buyDescription }}</p>
+        <app-values [product]="product"></app-values>
+      </div>
+      <div class="tabs">
+        <app-tabs>
+          <div tab1>{{ product.loanDescription }}</div>
+          <div tab2>p[oiuytuiopiuyt</div>
+        </app-tabs>
+      </div>
+      <div class="call-to-action mobile">
+        <button class="button" (click)="toggleShowSimulator()">Simular e invertir</button>
+      </div>
+      <app-simulator
+        [product]="product"
+        [show]="showSimulator"
+        (toggle)="toggleShowSimulator()">
+      </app-simulator>
+    </ng-container>
+    <ng-template #noMatch>
+      <h1>No Hay productos con ese id</h1>
+    </ng-template>
+  </ng-container>
+  <ng-template #loader>
+    <h1>CARGANDO</h1>
+  </ng-template>
+</div>

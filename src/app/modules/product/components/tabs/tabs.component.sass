@@ -1,0 +1,15 @@
+@import 'mixins'
+
+.wrapper-tabs
+  +flex(center, null, column)
+  .tabs
+    margin: 0 8px
+    +flex(center)
+    li
+      +bold()
+      padding: 8px
+      font-size: 12px
+      &.active
+        border-top: 2px solid var(--blue-1)
+  .content
+    margin: 0 16px

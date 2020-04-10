@@ -1,7 +1,10 @@
 @import 'mixins'
+@import 'breakpoints'
 
 .wrapper-product-card
+  display: block
   border-radius: 10px
+  color: var(--black-1)
   border: 1px solid var(--gray-3)
   figure
     +flex(center, center)
@@ -46,3 +49,11 @@
         +bold()
         font-size: 12px
         color: var(--gray-4)
+
++for-desktop-up
+  .wrapper-product-card
+    +flex(null, null, column)
+    width: 320px
+    min-height: 500px
+    .progress
+      margin-top: auto

@@ -1,11 +1,11 @@
-<div class="wrapper-product-card" *ngIf="product">
+<a [routerLink]="['/product', product.id]" class="wrapper-product-card" *ngIf="product">
   <figure>
     <img [src]="image">
   </figure>
   <div class="head">
     <div class="labels">
       <div class="time-to-go">Termina en 2 días</div>
-      <div class="investors">429 inversores</div>
+      <div class="investors">{{ 500 }} inversores</div>
     </div>
     <h3 class="title">{{ product.name }}</h3>
   </div>
@@ -15,8 +15,8 @@
       <div class="fill" [ngStyle]="{ width: percentage }"></div>
     </div>
     <div class="labels">
-      <div class="goal">{{ product.amountRequeredMin | currency : null : 'symbol' : '1.0-0'}}</div>
+      <div class="goal">{{ product.amountRequeredMin | currencyFormat }}</div>
       <div class="percentage">{{ percentage }}</div>
     </div>
   </div>
-</div>
+</a>

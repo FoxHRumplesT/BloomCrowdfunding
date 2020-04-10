@@ -1,0 +1,16 @@
+@import 'mixins'
+
+.wrapper-values
+  +flex(center, space-around)
+  border-top: 1px solid var(--gray-3)
+  border-bottom: 1px solid var(--gray-3)
+  .text-value
+    margin: 16px 0
+    +flex(center, center, column)
+    h4
+      +bold()
+      font-size: 12px
+    span
+      +bold()
+      font-size: 16px
+      color: var(--blue-1)

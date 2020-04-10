@@ -1,0 +1,41 @@
+@import 'mixins'
+
+.wrapper-product
+  position: relative
+  margin-bottom: 100px
+  figure
+    +flex(center, center)
+    width: 100%
+    overflow: hidden
+    max-height: 210px
+    margin-bottom: 16px
+    img
+      width: 100%
+  .info
+    +flex(null, null, column)
+    margin: 0 16px 16px 16px
+    .by-end
+      +flex(center, space-between)
+      color: var(--gray-6)
+      font-size: 10px
+      margin-bottom: 16px
+    .title
+      +bold()
+      font-size: 18px
+      text-align: center
+      margin-bottom: 16px
+    .buy-description
+      font-size: 12px
+      text-align: center
+      margin-bottom: 16px
+  .call-to-action
+    +flex(center, center)
+    left: 0
+    bottom: 0
+    width: 100%
+    position: fixed
+    .button
+      width: 100%
+      margin: 16px
+      color: var(--white-1)
+      background-color: var(--blue-1)
