@@ -1,81 +1,52 @@
 @import 'mixins'
 
-.wrapper-simulator
-  top: 0
-  left: 0
-  width: 100vw
-  height: 100vh
-  display: none
-  position: fixed
-  &.show
-    display: block
-  .overlay
-    top: 0
-    left: 0
-    z-index: 10
-    width: 100%
-    height: 100%
-    position: absolute
-    background-color: rgba(26, 27, 41, 0.5)
-  .card
+.description
+  font-size: 12px
+  margin: 0 16px 16px 16px
+.return-values
+  +flex(center, space-between)
+  margin: 16px
+  .item
     +flex(null, center, column)
-    left: 0
-    bottom: 0
-    z-index: 20
-    position: absolute
-    border-radius: 10px 10px 0 0
-    background-color: var(--white-1)
-    .title
+    .name
       +bold()
-      font-size: 18px
-      margin: 16px 16px 24px 16px
-    .description
       font-size: 12px
-      margin: 0 16px 16px 16px
-    .return-values
-      +flex(center, space-between)
-      margin: 16px
-      .item
-        +flex(null, center, column)
-        .name
-          +bold()
-          font-size: 12px
-          text-align: center
-        .value
-          font-size: 14px
-          text-align: center
-    .box
-      +flex(null, center, column)
-      background-color: var(--blue-3)
-      .input
-        +flex(center)
-        margin: 16px
-        height: 40px
-        border-radius: 10px
-        .price
-          +flex(center, center)
-          width: 40px
-          height: 100%
-          flex: 0 0 auto
-          color: var(--white-1)
-          border-radius: 10px 0 0 10px
-          background-color: var(--blue-1)
-        input
-          width: 100%
-          height: 100%
-          padding: 0 16px
-          border-radius: 0 10px 10px 0
-      .amount, .fees
-        +flex(center, space-between)
-        margin: 0 16px 16px 16px
-        p
-          +bold()
-          font-size: 12px
-          text-align: center
-        span
-          font-size: 14px
-          text-align: center
-      .button
-        color: var(--white-1)
-        margin: 0 16px 16px 16px
-        background-color: var(--blue-1)
+      text-align: center
+    .value
+      font-size: 14px
+      text-align: center
+.box
+  +flex(null, center, column)
+  background-color: var(--blue-3)
+  .input
+    +flex(center)
+    margin: 16px
+    height: 40px
+    border-radius: 10px
+    .price
+      +flex(center, center)
+      width: 40px
+      height: 100%
+      flex: 0 0 auto
+      color: var(--white-1)
+      border-radius: 10px 0 0 10px
+      background-color: var(--blue-1)
+    input
+      width: 100%
+      height: 100%
+      padding: 0 16px
+      border-radius: 0 10px 10px 0
+  .amount, .fees
+    +flex(center, space-between)
+    margin: 0 16px 16px 16px
+    p
+      +bold()
+      font-size: 12px
+      text-align: center
+    span
+      font-size: 14px
+      text-align: center
+  .button
+    color: var(--white-1)
+    margin: 0 16px 16px 16px
+    background-color: var(--blue-1)

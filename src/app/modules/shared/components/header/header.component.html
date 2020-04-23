@@ -1,10 +1,17 @@
 <div class="wrapper-header">
-  <a class="login-mobile" [routerLink]="['/auth', 'login']">Iniciar sesión</a>
+  <a class="login-mobile" [routerLink]="['/auth', 'login']" *ngIf="!(hasUser$ | async); else userMobile">Iniciar sesión</a>
+  <ng-template #userMobile>
+    <figure class="user-icon mobile" [routerLink]="['/profile']">
+      <img src="assets/img/user-no-image.svg">
+    </figure>
+  </ng-template>
   <figure class="header-logo">
-    <img src="assets/img/bloom-logo-1.png">
+    <a [href]="links.main" target="_blank">
+      <img src="assets/img/bloom-logo-1.png">
+    </a>
   </figure>
   <div class="actions-mobile">
-    <span class="icon-search" (click)="toggleSearchInput()"></span>
+    <span class="icon-search" *ngIf="showSearcher" (click)="toggleSearchInput()"></span>
     <span class="icon-menu" (click)="toggleShowMenu()"></span>
   </div>
   <div class="actions-desktop">
@@ -17,7 +24,12 @@
         <a [routerLink]="['/about']">Quienes somos</a>
       </li>
       <li>
-        <a class="button" [routerLink]="['/auth', 'login']">Iniciar sesión</a>
+        <a class="button" [routerLink]="['/auth', 'login']" *ngIf="!(hasUser$ | async); else userDesktop">Iniciar sesión</a>
+        <ng-template #userDesktop>
+          <figure class="user-icon desktop" [routerLink]="['/profile']">
+            <img src="assets/img/user-no-image.svg">
+          </figure>
+        </ng-template>
       </li>
     </ul>
   </div>

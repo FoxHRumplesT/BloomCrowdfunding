@@ -1,0 +1,35 @@
+@import 'mixins'
+
+:host
+  position: absolute
+  left: 0
+  bottom: 0
+  width: 100%
+
+.wrapper-footer
+  +flex(center, space-around)
+  width: 100%
+  flex-wrap: wrap
+  figure
+    width: 30%
+    flex: 0 0 auto
+    max-width: 100px
+    img
+      width: 100%
+  .links
+    +flex(null, null, column)
+    width: 33%
+    li
+      text-align: center
+      a
+        font-size: 10px
+        color: var(--gray-6)
+  .copyright
+    +flex(center, center)
+    margin-top: 16px
+    width: 100%
+    height: 30px
+    font-size: 10px
+    border-top: 1px solid var(--gray-3)
+    a
+      color: var(--blue-1)

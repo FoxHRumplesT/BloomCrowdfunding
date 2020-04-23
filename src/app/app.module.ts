@@ -6,8 +6,11 @@ import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 
 import { environment } from '@environment';
+import { AppFacade } from './app.facade';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './modules/shared/shared.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AuthModule,
+    SharedModule,
     StoreModule.forRoot({}),
     !environment.production ? StoreDevtoolsModule.instrument({
       maxAge: 50
@@ -23,7 +28,9 @@ import { AppComponent } from './app.component';
     EffectsModule.forRoot([]),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AppFacade
+  ],
   bootstrap: [
     AppComponent
   ]

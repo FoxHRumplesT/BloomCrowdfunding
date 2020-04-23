@@ -5,11 +5,17 @@ import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './components/header/header.component';
 import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
+import { ModalComponent } from './components/modal/modal.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    CurrencyFormatPipe
+    CurrencyFormatPipe,
+    ModalComponent,
+    FooterComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +24,9 @@ import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
   ],
   exports: [
     HeaderComponent,
+    ModalComponent,
+    FooterComponent,
+    LoaderComponent,
     CurrencyFormatPipe
   ]
 })

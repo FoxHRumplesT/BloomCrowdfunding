@@ -1,0 +1,46 @@
+@import 'mixins'
+
+.wrapper-profile
+  +flex(center, center)
+  .profile-info
+    +flex(center, center, column)
+    margin: 50px 0
+    width: calc(100% - 32px)
+    .username
+      +bold()
+      font-size: 22px
+    .role
+      font-size: 12px
+      color: var(--gray-6)
+    hr
+      width: 100%
+      height: 1px
+      margin: 16px 0
+      background-color: var(--gray-3)
+    .info
+      +flex(center, center, column)
+      .email, .phone, .dni
+        font-size: 14px
+        margin-bottom: 8px
+      .dni
+        margin-bottom: 16px
+      .change-password
+        color: var(--white-1)
+        background-color: var(--blue-1)
+    .info, form
+      display: none
+      &.show
+        +flex(center, center, column)
+    form
+      .input-text
+        margin-bottom: 16px
+      .passwords
+        &.ng-invalid
+          &.ng-touched
+            input
+              box-shadow: 0 0 0 2px var(--red-1)
+      .button
+        color: var(--white-1)
+        background-color: var(--blue-1)
+        &:disabled
+          background-color: var(--blue-2)

@@ -18,11 +18,11 @@ export class AuthServices {
     private http: HttpClient
   ) {}
 
-  public login(username: string, password: string): Observable<HttpResponse<User>> {
+  public login(username: string, password: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Basic ${btoa(username + ':' + password)}`
     });
-    return this.http.post<User>(api.login(), null, { headers, observe: 'response', withCredentials: true });
+    return this.http.post<any>(api.login(), null, { headers });
   }
 
   public createUser(payload: CreateUserPayload): Observable<any> {

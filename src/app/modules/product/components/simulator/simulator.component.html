@@ -1,41 +1,30 @@
-<div class="wrapper-simulator" [class.show]="show">
-  <div class="overlay" (click)="toggle.emit()"></div>
-  <div class="card">
-    <h2 class="title">Invertirás en {{ product.name }}</h2>
-    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien nulla pretium, amet, sit fermentum urna aliquam. Aliquam pharetra et iaculis amet volutpat. Orci, enim morbi leo, magna quis in in amet. Magna venenatis lobortis purus augue in quam consectetur nulla in.</p>
-    <div class="return-values">
-      <div class="item">
-        <p class="name">Tasa de retorno</p>
-        <span class="value">12% E.A</span>
-      </div>
-      <div class="item">
-        <p class="name">Pago (interes + capital)</p>
-        <span class="value">Mensual</span>
-      </div>
-      <div class="item">
-        <p class="name">Plazo</p>
-        <span class="value">10 meses</span>
-      </div>
-    </div>
-    <div [formGroup]="form" class="box">
-      <label for="investmentValue" class="input">
-        <span class="price">$</span>
-        <input
-          type="text"
-          formControlName="value"
-          id="investmentValue"
-          [placeholder]="1000000 | currencyFormat"
-          [value]="value | currencyFormat : ''">
-      </label>
-      <div class="amount">
-        <p>Monto (Inversion + rentabilidad):</p>
-        <span>{{ calculatedAmount | currencyFormat }}</span>
-      </div>
-      <div class="fees">
-        <p>Cuotas fijas (Interesa + capital):</p>
-        <span>{{ calculatedFees | currencyFormat }}</span>
-      </div>
-      <button class="button">¡Invertir ahora!</button>
-    </div>
+<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sapien nulla pretium, amet, sit fermentum urna aliquam. Aliquam pharetra et iaculis amet volutpat. Orci, enim morbi leo, magna quis in in amet. Magna venenatis lobortis purus augue in quam consectetur nulla in.</p>
+<div class="return-values">
+  <div class="item">
+    <p class="name">Tasa de retorno</p>
+    <span class="value">12% E.A</span>
   </div>
+  <div class="item">
+    <p class="name">Pago (interes + capital)</p>
+    <span class="value">Mensual</span>
+  </div>
+  <div class="item">
+    <p class="name">Plazo</p>
+    <span class="value">10 meses</span>
+  </div>
+</div>
+<div [formGroup]="form" class="box">
+  <label for="investmentValue" class="input">
+    <span class="price">$</span>
+    <input type="text" formControlName="value" id="investmentValue" [placeholder]="1000000 | currencyFormat" [value]="value | currencyFormat : ''">
+  </label>
+  <div class="fees">
+    <p>Cuotas fijas (Interesa + capital):</p>
+    <span>{{ calculatedFees | currencyFormat }}</span>
+  </div>
+  <div class="amount">
+    <p>Monto (Inversion + rentabilidad):</p>
+    <span>{{ calculatedAmount | currencyFormat }}</span>
+  </div>
+  <button class="button">¡Invertir ahora!</button>
 </div>

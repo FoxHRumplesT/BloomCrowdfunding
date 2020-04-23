@@ -13,6 +13,8 @@ import { AuthServices } from './auth.services';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthComponent } from './auth.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -20,13 +22,18 @@ import { AuthComponent } from './auth.component';
   declarations: [
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    SharedModule,
     StoreModule.forFeature(authFeatureName, authReducers),
     EffectsModule.forFeature([ AuthEffects ]),
+    AuthRoutingModule
+  ],
+  exports: [
     AuthRoutingModule
   ],
   providers: [

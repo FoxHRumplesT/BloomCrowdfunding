@@ -1,8 +1,8 @@
 @import 'mixins'
+@import 'breakpoints'
 
 .wrapper-product
   position: relative
-  margin-bottom: 100px
   figure
     +flex(center, center)
     width: 100%
@@ -28,8 +28,14 @@
       font-size: 12px
       text-align: center
       margin-bottom: 16px
+  .mobile-simulator
+    .title
+      +bold()
+      font-size: 18px
+      margin: 16px 16px 24px 16px
   .call-to-action
     +flex(center, center)
+    z-index: 10
     left: 0
     bottom: 0
     width: 100%
@@ -39,3 +45,43 @@
       margin: 16px
       color: var(--white-1)
       background-color: var(--blue-1)
+
+  .loader
+    width: 100%
+
++for-desktop-up()
+  .wrapper-product
+    +flex()
+    margin: 0 32px
+    .desktop
+      width: 100%
+      .title
+        +bold()
+        font-size: 32px
+        text-align: center
+        margin-bottom: 24px
+        border-bottom: 1px solid var(--gray-3)
+      .product
+        +flex(flex-start)
+        position: relative
+        .product-info
+          width: 65%
+          flex: 0 0 auto
+          margin-right: 32px
+          figure
+            width: 100%
+            max-height: 400px
+            margin-bottom: 16px
+          .buy-description
+            font-size: 14px
+            margin-bottom: 16px
+        .simulator
+          top: 16px
+          position: sticky
+          .by-end
+            +flex(center, space-between)
+            color: var(--gray-6)
+            font-size: 14px
+            margin-bottom: 16px
+          .values
+            margin-bottom: 16px

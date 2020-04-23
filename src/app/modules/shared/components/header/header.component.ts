@@ -1,7 +1,9 @@
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { filter, debounceTime } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Component, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
+import { debounceTime, map } from 'rxjs/operators';
+import { Subscription, Observable } from 'rxjs';
+
+import { AppFacade } from '@app/app.facade';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +16,15 @@ export class HeaderComponent implements OnDestroy {
   public showSearch = false;
   public form: FormGroup;
   private searchSubscription: Subscription;
+  @Input() showSearcher = true;
   @Output() onQueryChange: EventEmitter<string> = new EventEmitter();
+  public links = {
+    main: 'https://www.bloomcrowdfunding.co/',
+  };
 
-  constructor() {
+  constructor(
+    private appFacade: AppFacade
+  ) {
     this.form = new FormGroup({
       query: new FormControl('')
     });
@@ -39,6 +47,10 @@ export class HeaderComponent implements OnDestroy {
     this.showSearch = !this.showSearch;
   }
 
-
+  get hasUser$(): Observable<boolean> {
+    return this.appFacade.user$.pipe(
+      map(user => !!user)
+    );
+  }
 
 }

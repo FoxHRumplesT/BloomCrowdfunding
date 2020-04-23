@@ -1,0 +1,6 @@
+<div class="wrapper-modal" [class.show]="show">
+  <div class="overlay" (click)="toggle.emit()"></div>
+  <div class="card">
+    <ng-content></ng-content>
+  </div>
+</div>

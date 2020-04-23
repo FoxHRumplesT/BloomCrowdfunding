@@ -10,9 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SimulatorComponent {
 
-  @Input() show: boolean;
   @Input() product: Product;
-  @Output() toggle: EventEmitter<void> = new EventEmitter();
   public form: FormGroup;
 
   constructor() {
@@ -27,11 +25,16 @@ export class SimulatorComponent {
   }
 
   get calculatedAmount(): number {
-    return this.value * 2;
+    const months = 3;
+    return months * this.calculatedFees;
   }
 
   get calculatedFees(): number {
-    return this.value * 3;
+    const months = 3;
+    const interest = 0.24;
+    const pow = Math.pow(( 1 + interest), (1 / 12));
+    const x = (this.value * (pow - 1)) / (1 - Math.pow((1 + (pow - 1)), (-(months))));
+    return x;
   }
 
 }

@@ -13,7 +13,9 @@ const ui = createReducer(
   on(actions.loginSuccessAction, (state, payload) => ({ ...state, isLoadingLogin: false }))
 );
 
-const initialDataState: DataState = {} as DataState;
+const initialDataState: DataState = {
+  user: null
+} as DataState;
 
 const data = createReducer(
   initialDataState,

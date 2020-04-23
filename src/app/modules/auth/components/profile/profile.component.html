@@ -1,0 +1,25 @@
+<app-header [showSearcher]="false"></app-header>
+<div class="wrapper-profile">
+  <div class="profile-info">
+    <figure>
+      <img src="assets/img/user-no-image.svg">
+    </figure>
+    <h3 class="username">Fox Rumplestiltskin</h3>
+    <div class="role">Inversor - 33 proyectos apoyados</div>
+    <hr>
+    <div class="info" [class.show]="!isChangingPassword">
+      <div class="email">name@email.com</div>
+      <div class="phone">321 999 000</div>
+      <div class="dni">Número de documento</div>
+      <button class="change-password button" (click)="toggleChangingPassword()">Cambiar contraseña</button>
+    </div>
+    <form [formGroup]="form" [class.show]="isChangingPassword">
+      <input class="input-text old-password" type="text" placeholder="Contraseña actual" formControlName="oldPassword">
+      <div class="passwords" formGroupName="passwords">
+        <input class="input-text password" type="text" placeholder="Contraseña nueva" formControlName="password">
+        <input class="input-text confirm-password" type="text" placeholder="Confirmar contraseña" formControlName="confirmPassword">
+      </div>
+      <button (click)="submit()" class="button" [disabled]="form.invalid">¡Cambiar contraseña!</button>
+    </form>
+  </div>
+</div>

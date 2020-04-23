@@ -1,39 +1,87 @@
-<app-header></app-header>
+<app-header [showSearcher]="false"></app-header>
 <div class="wrapper-product">
   <ng-container *ngIf="!(isLoadingProduct$ | async); else loader">
     <ng-container *ngIf="product$ | async as product; else noMatch">
-      <figure>
-        <img [src]="image$ | async">
-      </figure>
-      <div class="info mobile">
-        <div class="by-end">
-          <span class="by">Por: Kurotsushi Mayuri</span>
-          <span class="end">Termina  en 1 mes y 15 días</span>
+      <div class="mobile">
+        <figure>
+          <img [src]="image$ | async">
+        </figure>
+        <div class="info mobile">
+          <div class="by-end">
+            <span class="by">Por: Kurotsushi Mayuri</span>
+            <span class="end">Termina  en 1 mes y 15 días</span>
+          </div>
+          <h2 class="title">{{ product.name }}</h2>
+          <p class="buy-description">{{ product.buyDescription }}</p>
+          <app-values [product]="product"></app-values>
         </div>
+        <div class="tabs">
+          <app-tabs>
+            <div tab1>{{ product.loanDescription }} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus tincidunt consequat. Etiam gravida vitae elit quis tristique. Ut vehicula ut leo condimentum condimentum. Phasellus fringilla rhoncus ligula id vehicula. Proin ut lectus est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur vulputate nisl ut molestie mollis. Integer sit amet neque porta, dictum purus a, pulvinar ex.
+
+              Praesent egestas venenatis orci quis euismod. In lectus ante, convallis vel lacus at, accumsan luctus sem. Ut sagittis lectus a fermentum posuere. Donec quis ultricies metus. Integer ornare, justo vitae egestas porttitor, libero turpis rutrum sapien, eu varius metus neque sed massa. Quisque vulputate orci sit amet mattis auctor. Sed ac massa sed felis cursus posuere vel sit amet quam. Phasellus lorem magna, tincidunt vitae odio ut, vulputate egestas diam. Aenean ante leo, maximus non sem ac, luctus pharetra velit. Aenean a cursus lorem. Vivamus eget enim sed lorem viverra commodo. Phasellus eget felis vehicula, ullamcorper magna id, congue tellus. Sed dignissim eu erat non ultricies. Sed feugiat libero a sem euismod, ut cursus arcu iaculis. Nulla facilisi. Quisque lacinia arcu a rhoncus condimentum.</div>
+            <div tab2>Mauris ultricies dui vel velit bibendum, quis hendrerit massa pulvinar. Curabitur vitae pretium nisi. Maecenas sit amet consectetur purus. Etiam blandit neque tempor suscipit molestie. Maecenas auctor efficitur magna et gravida. Quisque pulvinar magna ut magna interdum rhoncus. Proin a velit et nisl varius dignissim.
+
+              Aenean vulputate orci euismod, scelerisque orci non, cursus urna. Donec dapibus rutrum ex, id porttitor turpis dapibus in. Maecenas sit amet placerat magna. Sed vitae quam diam. Nullam commodo cursus turpis ut blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque nec commodo felis. Donec a mattis est. Sed ac ullamcorper sem. Suspendisse laoreet nisl sodales ante tempus elementum. Vestibulum lacinia arcu et eros auctor, in bibendum sem porta. Aenean magna nibh, bibendum ut sapien a, condimentu</div>
+          </app-tabs>
+        </div>
+        <div class="call-to-action mobile">
+          <button class="button" (click)="toggleShowSimulator()">Simular e invertir</button>
+        </div>
+        <app-modal
+          [show]="showSimulator"
+          (toggle)="toggleShowSimulator()">
+          <div class="mobile-simulator">
+            <h2 class="title">Invertirás en {{ product.name }}</h2>
+            <app-simulator [product]="product"></app-simulator>
+          </div>
+        </app-modal>
+      </div>
+      <div class="desktop">
         <h2 class="title">{{ product.name }}</h2>
-        <p class="buy-description">{{ product.buyDescription }}</p>
-        <app-values [product]="product"></app-values>
+        <div class="product">
+          <div class="product-info">
+            <figure>
+              <img [src]="image$ | async">
+            </figure>
+            <p class="buy-description">{{ product.buyDescription }}</p>
+            <div class="tabs">
+              <app-tabs>
+                <div tab1>{{ product.loanDescription }}</div>
+                <div tab2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac viverra nisl. Donec efficitur justo metus, vitae fringilla ipsum imperdiet id. Duis sit amet faucibus massa, sit amet maximus risus. Duis gravida diam leo, ut volutpat augue lacinia id. Vivamus ultricies turpis tellus, lobortis auctor dolor fringilla non. Curabitur sit amet rhoncus ante. In arcu lorem, aliquet ac risus non, ultrices auctor augue. In at libero enim. Nullam felis lorem, ullamcorper at varius vitae, bibendum efficitur erat.
+
+                  Duis vel lacinia metus. Nulla eleifend rhoncus nunc eu ornare. Maecenas vestibulum nec metus ut interdum. Praesent dictum nisl vel ipsum aliquam, at ultrices erat iaculis. Nunc pulvinar venenatis eros, at tincidunt augue scelerisque vitae. Phasellus dictum efficitur tristique. Proin semper urna tincidunt aliquet suscipit. Integer a augue metus.
+
+                  Pellentesque a mi aliquet, consectetur sapien a, dignissim neque. Curabitur egestas velit orci, nec tincidunt nulla sollicitudin vel. Aliquam rhoncus facilisis elit, sit amet ultrices lacus posuere eu. Duis rhoncus sit amet dui quis ultrices. Duis purus eros, finibus at consequat quis, pulvinar id massa. Donec sed neque tellus. Nam fermentum leo eget orci hendrerit, eget faucibus mi mollis. Ut iaculis porttitor tellus eget consequat.
+
+                  Aenean et est ut sem pellentesque vehicula. Sed id ex vitae velit molestie consequat. Phasellus commodo velit metus, sit amet bibendum felis gravida et. Cras euismod et nibh sed hendrerit. Cras ultricies mi eu lacinia dapibus. Cras congue justo ut dui volutpat, et interdum neque pulvinar. Duis lectus ligula, vehicula at commodo in, pharetra eu est. Donec placerat nunc dui, eget lacinia ipsum sodales id. Nullam sit amet congue risus. Donec ipsum ligula, volutpat et sodales quis, feugiat nec justo. Nulla gravida ligula et ligula volutpat, ac commodo mi hendrerit. Quisque mollis, metus in pharetra hendrerit, lorem lacus cursus turpis, a posuere lacus lorem eget lacus. Phasellus elementum egestas mollis. In non ultrices turpis. Cras mattis felis mauris, ac eleifend purus volutpat vel. Nulla fringilla augue interdum porttitor semper.
+
+                  Ut faucibus non ipsum in interdum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam in ante ante. Quisque venenatis volutpat quam, vehicula suscipit turpis pharetra non. Aenean tempor libero ac velit tristique bibendum. Nullam varius nisl a commodo dapibus. Nullam nulla neque, dictum ac auctor non, molestie vel diam. Donec in scelerisque odio. Donec iaculis gravida ante, a dignissim odio congue eget. Aenean eleifend sem interdum fringilla rutrum. Mauris sit amet interdum ligula, vitae sodales nisl. Sed condimentum id nisi ut pulvinar. Sed quis cursus arcu.</div>
+              </app-tabs>
+            </div>
+          </div>
+          <div class="simulator">
+            <div class="desktop-simulator">
+              <div class="by-end">
+                <span class="by">Por: Kurotsushi Mayuri</span>
+                <span class="end">Termina  en 1 mes y 15 días</span>
+              </div>
+              <div class="values">
+                <app-values [product]="product"></app-values>
+              </div>
+              <app-simulator [product]="product"></app-simulator>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tabs">
-        <app-tabs>
-          <div tab1>{{ product.loanDescription }}</div>
-          <div tab2>p[oiuytuiopiuyt</div>
-        </app-tabs>
-      </div>
-      <div class="call-to-action mobile">
-        <button class="button" (click)="toggleShowSimulator()">Simular e invertir</button>
-      </div>
-      <app-simulator
-        [product]="product"
-        [show]="showSimulator"
-        (toggle)="toggleShowSimulator()">
-      </app-simulator>
     </ng-container>
     <ng-template #noMatch>
       <h1>No Hay productos con ese id</h1>
     </ng-template>
   </ng-container>
   <ng-template #loader>
-    <h1>CARGANDO</h1>
+    <div class="loader">
+      <app-loader></app-loader>
+    </div>
   </ng-template>
 </div>
