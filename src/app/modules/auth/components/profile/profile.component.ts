@@ -1,6 +1,10 @@
 import { FormGroup, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Component } from '@angular/core';
 
+import { AppFacade } from '@app/app.facade';
+import { User } from '../../auth.entities';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,7 +15,9 @@ export class ProfileComponent {
   public form: FormGroup;
   public isChangingPassword = false;
 
-  constructor() {
+  constructor(
+    private appFacade: AppFacade
+  ) {
     const { required } = Validators;
     this.form = new FormGroup({
       oldPassword: new FormControl('', [required]),
@@ -20,6 +26,10 @@ export class ProfileComponent {
         confirmPassword: new FormControl('', [required])
       }, { validators: [this.validateConfirmPassword] }),
     });
+  }
+
+  get user$(): Observable<User> {
+    return this.appFacade.user$;
   }
 
   private validateConfirmPassword = (c: AbstractControl): ValidationErrors => {

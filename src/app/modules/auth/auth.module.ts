@@ -15,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthComponent } from './auth.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SharedModule } from '../shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
 
 
 
@@ -38,7 +40,12 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     AuthFacade,
-    AuthServices
+    AuthServices,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ]
 })
 export class AuthModule { }

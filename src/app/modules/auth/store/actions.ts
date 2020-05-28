@@ -6,6 +6,7 @@ export const loginAction = createAction('[Auth] Login',
 props<{ payload: { username: string, password: string }}>());
 export const loginSuccessAction = createAction('[Auth] Login success',
 props<{ response: User }>());
+export const loginErrorAction = createAction('[Auth] Login error');
 
 export const createUserAction = createAction('[Auth] Create user',
 props<{ payload: CreateUserPayload}>());

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { User, CreateUserPayload } from './auth.entities';
 import { environment } from '@environment';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 const api = {
   login: () => `${environment.server}/auth/login`,
@@ -18,11 +18,8 @@ export class AuthServices {
     private http: HttpClient
   ) {}
 
-  public login(username: string, password: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Basic ${btoa(username + ':' + password)}`
-    });
-    return this.http.post<any>(api.login(), null, { headers });
+  public login(username: string, password: string): Observable<HttpResponse<any>> {
+    return this.http.get<any>(api.login(), { params: { username, password }, observe: 'response' });
   }
 
   public createUser(payload: CreateUserPayload): Observable<any> {

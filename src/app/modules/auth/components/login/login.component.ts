@@ -18,8 +18,8 @@ export class LoginComponent {
   ) {
     const { required, minLength, maxLength, pattern} = Validators;
     this.form = new FormGroup({
-      username: new FormControl('excecrable', [required, pattern(NO_WHITESPACE), minLength(8), maxLength(50)]),
-      password: new FormControl('Aruma2020#', [required, minLength(8), maxLength(50)])
+      username: new FormControl('admin', [required, pattern(NO_WHITESPACE), minLength(4), maxLength(50)]),
+      password: new FormControl('password', [required, minLength(8), maxLength(50)])
     });
   }
 

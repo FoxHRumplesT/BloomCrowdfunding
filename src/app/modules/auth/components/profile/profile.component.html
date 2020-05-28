@@ -1,16 +1,16 @@
 <app-header [showSearcher]="false"></app-header>
-<div class="wrapper-profile">
+<div class="wrapper-profile" *ngIf="user$ | async as user">
   <div class="profile-info">
     <figure>
       <img src="assets/img/user-no-image.svg">
     </figure>
-    <h3 class="username">Fox Rumplestiltskin</h3>
+    <h3 class="username">{{ user.name }}</h3>
     <div class="role">Inversor - 33 proyectos apoyados</div>
     <hr>
     <div class="info" [class.show]="!isChangingPassword">
-      <div class="email">name@email.com</div>
-      <div class="phone">321 999 000</div>
-      <div class="dni">Número de documento</div>
+      <div class="email">{{ user.email }}</div>
+      <div class="phone">{{ user.phone }}</div>
+      <div class="dni">{{ user.dni }}</div>
       <button class="change-password button" (click)="toggleChangingPassword()">Cambiar contraseña</button>
     </div>
     <form [formGroup]="form" [class.show]="isChangingPassword">

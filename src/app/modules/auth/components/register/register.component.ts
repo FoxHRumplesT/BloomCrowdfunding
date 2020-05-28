@@ -19,17 +19,17 @@ export class RegisterComponent {
   ) {
     const { required, requiredTrue } = Validators;
     this.form = new FormGroup({
-      name: new FormControl('', [required]),
-      lastName: new FormControl('', [required]),
-      phone: new FormControl('', [required]),
-      email: new FormControl('', [required]),
-      address: new FormControl('', [required]),
-      documentType: new FormControl('', [required]),
-      documentNumber: new FormControl('', [required]),
-      username: new FormControl('', [required]),
+      name: new FormControl('Julian', [required]),
+      lastName: new FormControl('Test', [required]),
+      phone: new FormControl('321321321', [required]),
+      email: new FormControl('juliantest', [required]),
+      address: new FormControl('cra 100 #10-10', [required]),
+      // documentType: new FormControl('', [required]),
+      documentNumber: new FormControl('1018273847', [required]),
+      username: new FormControl('juliantest', [required]),
       passwords: new FormGroup({
-        password: new FormControl('', [required]),
-        confirmPassword: new FormControl('', [required])
+        password: new FormControl('123123', [required]),
+        confirmPassword: new FormControl('123123', [required])
       }, { validators: [this.validateConfirmPassword] }),
       acceptTerms: new FormControl(null, [required, requiredTrue])
     });
