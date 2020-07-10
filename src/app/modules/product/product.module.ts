@@ -15,6 +15,7 @@ import { ValuesComponent } from './components/values/values.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { SimulatorComponent } from './components/simulator/simulator.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductComponent,
     ValuesComponent,
     TabsComponent,
-    SimulatorComponent
+    SimulatorComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
