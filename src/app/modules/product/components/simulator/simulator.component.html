@@ -13,7 +13,7 @@
     <span class="value">10 meses</span>
   </div>
 </div>
-<div [formGroup]="form" class="box">
+<form [formGroup]="form" class="box" (submit)="onSubmit()">
   <label for="investmentValue" class="input">
     <span class="price">$</span>
     <input type="text" formControlName="value" id="investmentValue" [placeholder]="1000000 | currencyFormat" [value]="value | currencyFormat : ''">
@@ -26,5 +26,5 @@
     <p>Monto (Inversion + rentabilidad):</p>
     <span>{{ calculatedAmount | currencyFormat }}</span>
   </div>
-  <button class="button">¡Invertir ahora!</button>
-</div>
+  <button type="submit" class="button">¡Invertir ahora!</button>
+</form>

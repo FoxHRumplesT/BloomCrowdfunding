@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
 
 import { ProductServices } from '../product.services';
-import { fetchProductAction, fetchProductSuccessAction } from './actions';
+import * as actions from './actions';
 
 @Injectable()
 export class ProductEffects {
@@ -13,15 +13,24 @@ export class ProductEffects {
   constructor(
     private actions$: Actions,
     private productServices: ProductServices
-  ) {}
+  ) { }
 
   fetchProduct$: Observable<Action> = createEffect(() => this.actions$.pipe(
-    ofType(fetchProductAction),
-    switchMap(({ payload }) => this.productServices.fetchProduct(payload).pipe(
+    ofType(actions.fetchProductAction),
+    switchMap(({ payload }) => this.productServices.fetchProduct$(payload).pipe(
       map(response => ({ response: response.data, error: null })),
       catchError(error => of({ error, response: null }))
     )),
-    map(({ response, error }) => fetchProductSuccessAction({ response }))
+    map(({ response, error }) => actions.fetchProductSuccessAction({ response }))
+  ));
+
+  createTransaction$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    ofType(actions.createTransactionAction),
+    switchMap(({ payload }) => this.productServices.createTransaction$(payload).pipe(
+      map(response => ({ response, error: null })),
+      catchError(error => of({ error, response: null }))
+    )),
+    map(({ response, error }) => actions.createTransactionSuccessAction({ response }))
   ));
 
 }

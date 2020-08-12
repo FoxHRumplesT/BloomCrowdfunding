@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  server: 'http://72.167.221.250:3000',
-  api: 'http://72.167.221.250:3000/api/v1'
+  server: 'http://129.213.119.245:8280',
+  api: 'http://129.213.119.245:8280/api/v1'
 };
 
 /*

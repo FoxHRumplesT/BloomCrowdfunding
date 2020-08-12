@@ -13,11 +13,15 @@ const ui = createReducer(
   on(actions.fetchProductSuccessAction, (state, payload) => ({ ...state, isLoadingProduct: false })),
 );
 
-const initialDataState: DataState = {} as DataState;
+const initialDataState: DataState = {
+  product: null,
+  transaction: null
+} as DataState;
 
 const data = createReducer(
   initialDataState,
   on(actions.fetchProductSuccessAction, (state, { response }) => ({ ...state, product: response })),
+  on(actions.createTransactionSuccessAction, (state, { response }) => ({ ...state, transaction: response })),
 );
 
 export const productReducers = combineReducers({

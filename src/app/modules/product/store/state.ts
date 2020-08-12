@@ -1,4 +1,5 @@
 import { Product } from '../../explore/explore.entities';
+import { CreateTransactionResponse } from '../product.entities';
 
 export const productFeatureName = 'product';
 
@@ -8,6 +9,7 @@ export interface UIState {
 
 export interface DataState {
   product: Product;
+  transaction: CreateTransactionResponse;
 }
 export interface State {
   ui: UIState;

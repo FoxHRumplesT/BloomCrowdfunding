@@ -5,3 +5,4 @@ const productStateSelector = createFeatureSelector<State>(productFeatureName);
 
 export const uiSelector = createSelector(productStateSelector, state => state.ui);
 export const productSelector = createSelector(productStateSelector, state => state.data.product);
+export const transactionSelector = createSelector(productStateSelector, state => state.data.transaction);

@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Product } from '../../../explore/explore.entities';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-simulator',
@@ -13,10 +14,13 @@ export class SimulatorComponent {
   @Input() product: Product;
   public form: FormGroup;
 
-  constructor() {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     const { required } = Validators;
     this.form = new FormGroup({
-      value: new FormControl('', [required])
+      value: new FormControl('20000', [required])
     });
   }
 
@@ -35,6 +39,10 @@ export class SimulatorComponent {
     const pow = Math.pow(( 1 + interest), (1 / 12));
     const x = (this.value * (pow - 1)) / (1 - Math.pow((1 + (pow - 1)), (-(months))));
     return x;
+  }
+
+  public onSubmit(): void {
+    this.router.navigate(['pay', this.value], { relativeTo: this.route });
   }
 
 }

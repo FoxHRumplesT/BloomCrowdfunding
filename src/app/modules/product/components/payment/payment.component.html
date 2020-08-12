@@ -1,3 +1,20 @@
-<div class="form">
-  PAYMENT FORM
+<app-header [showSearcher]="false"></app-header>
+<div class="wrapper-form">
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <input class="input-text" type="text" placeholder="Nombres" formControlName="names" />
+    <input class="input-text" type="text" placeholder="Apellidos" formControlName="lastNames" />
+    <input class="input-text" type="text" placeholder="Email" formControlName="email" />
+    <input class="input-text" type="text" placeholder="Telefono" formControlName="phone" />
+    <select class="input-text select" formControlName="idTypeDocument">
+      <option [ngValue]="null" disabled>Tipo de identificacion</option>
+      <option *ngFor="let d of documentTypes" [ngValue]="d.value">{{ d.name }}</option>
+    </select>
+    <input class="input-text" type="text" placeholder="Documento" formControlName="numberDocument" />
+    <button type="submit" class="button">Enviar</button>
+  </form>
+  <form class="invisible-form" ngNoForm *ngIf="transaction$ | async as transaction" method="POST" action="https://secure.payzen.lat/vads-payment/">
+    <input *ngFor="let vad of transaction.data?.vads" class="input-text" type="hidden" [name]="vad.name" [value]="vad.value">
+    <input class="input-text" type="hidden" name="signature" [value]="transaction.data?.signature">
+    <button #formButton type="submit" class="button">Enviar</button>
+  </form>
 </div>

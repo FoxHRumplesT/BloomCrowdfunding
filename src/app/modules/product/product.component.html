@@ -26,7 +26,7 @@
           </app-tabs>
         </div>
         <div class="call-to-action mobile">
-          <button class="button" [routerLink]="'pay'">Simular e invertir</button>
+          <button class="button" (click)="toggleShowSimulator()">Simular e invertir</button>
         </div>
         <app-modal
           [show]="showSimulator"

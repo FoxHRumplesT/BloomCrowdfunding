@@ -11,7 +11,7 @@ const routes: Routes = [
     component: ProductComponent
   },
   {
-    path: ':productId/pay',
+    path: ':productId/pay/:value',
     component: PaymentComponent
   }
 ];

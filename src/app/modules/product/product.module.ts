@@ -1,3 +1,4 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,7 +15,6 @@ import { ProductServices } from './product.services';
 import { ValuesComponent } from './components/values/values.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { SimulatorComponent } from './components/simulator/simulator.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './components/payment/payment.component';
 
 
@@ -31,6 +31,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
     StoreModule.forFeature(productFeatureName, productReducers),
     EffectsModule.forFeature([ ProductEffects ]),
     ProductRoutingModule
